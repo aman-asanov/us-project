@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>О нас - MedBridge Bishkek</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #4da48a, #59ae97);
+            color: rgb(255, 255, 255);
+            padding: 4rem 0;
+            margin-top: 70px;
+        }
+
+        .about-mission {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .mission-text h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .mission-text p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .about-values {
+            background: linear-gradient(180deg, var(--light-bg) 0%, white 100%);
+            padding: 3rem 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(255, 252, 252, 0);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(26, 77, 62, 0.15);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .about-team {
+            background: white;
+            padding: 3rem 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 60px rgba(26, 77, 62, 0.25);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .member-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .member-name {
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+
+        .member-position {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .member-bio {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .benefits-section {
+            background: linear-gradient(180deg, var(--light-bg) 0%, white 100%);
+            padding: 3rem 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .benefit-item h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+        }
+
+        .benefit-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .stats-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-box {
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            opacity: 0.95;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            align-items: start;
+        }
+
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .timeline-content h4 {
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hospital"></i>
+                    <span>MedBridge</span>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link" data-i18n="navHome">Главная</a>
+                    <a href="clinics.html" class="nav-link" data-i18n="navClinics">Клиники</a>
+                    <a href="doctors.html" class="nav-link" data-i18n="navDoctors">Врачи</a>
+                    <a href="abroad-treatment.html" class="nav-link" data-i18n="navAbroad">Лечение за границей</a>
+                    <a href="doctors-section.html" class="nav-link" data-i18n="navDoctorsSection">Врачам</a>
+                    <a href="about-us.html" class="nav-link active" data-i18n="navAbout">О нас</a>
+                    <a href="#" class="nav-link" data-i18n="navContacts">Контакты</a>
+                </nav>
+
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLang">РУ</span>
+                        </button>
+                        <div class="lang-menu">
+                            <button class="lang-option" data-lang="ru">Русский</button>
+                            <button class="lang-option" data-lang="ky">Кыргызский</button>
+                            <button class="lang-option" data-lang="en">English</button>
+                        </div>
+                    </div>
+                    <button class="burger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div style="text-align: center;">
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">О компании MedBridge</h1>
+                <p style="font-size: 1.3rem; opacity: 0.95;">
+                    Соединяем пациентов с лучшей медициной в Кыргызстане и за границей
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Миссия и видение -->
+    <section class="about-mission">
+        <div class="container">
+            <div class="mission-content">
+                <div class="mission-text">
+                    <h2>Наша Миссия</h2>
+                    <p>
+                        MedBridge создана с одной целью - сделать медицинское обслуживание доступным и качественным для каждого пациента в Кыргызстане. Мы верим, что каждый человек имеет право получить лучшее лечение, независимо от того, где оно находится.
+                    </p>
+                    <p>
+                        Наша платформа объединяет пациентов, врачей и медицинские учреждения в единую экосистему, где можно быстро найти нужного врача, записаться на приём и если необходимо - получить лечение у ведущих специалистов Турции и Индии.
+                    </p>
+                </div>
+                <div style="text-align: center; font-size: 4rem; color: var(--primary-color);">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ценности -->
+    <section class="about-values">
+        <div class="container">
+            <h2>Наши ценности</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <h3>Качество</h3>
+                    <p>Мы работаем только с лучшими клиниками и врачами, имеющими соответствующую лицензию и опыт</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Доступность</h3>
+                    <p>Медицинские услуги должны быть доступны каждому, независимо от финансовых возможностей</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Конфиденциальность</h3>
+                    <p>Мы серьёзно относимся к защите личных данных и медицинской информации пациентов</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Надежность</h3>
+                    <p>Вы можете полностью положиться на нас - мы будем поддерживать вас на всех этапах</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Международный опыт</h3>
+                    <p>Мы соединяем местных пациентов с ведущими международными клиниками</p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-person-hiking"></i>
+                    </div>
+                    <h3>Профилактика</h3>
+                    <p>Мы верим что предотвращение болезней лучше, чем их лечение</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-numbers">
+                <div class="stat-box">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-text">Врачей в сети</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-text">Клиник Бишкека</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-text">Успешных направлений</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-text">Удовлетворённых пациентов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основные преимущества -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2>Почему выбирают MedBridge</h2>
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4><i class="fas fa-search"></i> Легкий поиск</h4>
+                    <p>Найдите идеального врача или клинику в несколько кликов с помощью расширенной фильтрации</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-calendar-check"></i> Быстрая запись</h4>
+                    <p>Запишитесь на прием онлайн в удобное для вас время без очередей</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-star"></i> Проверенные специалисты</h4>
+                    <p>Все врачи имеют лицензию, опыт и подтвержденные отзывы пациентов</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-passport"></i> Помощь с документами</h4>
+                    <p>Мы помогаем с оформлением виз, переводом документов и всеми бюрократическими процедурами</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-plane"></i> Организация поездки</h4>
+                    <p>Полное сопровождение: бронирование отелей, билетов, трансфера и медицинского маршрута</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-headset"></i> Поддержка 24/7</h4>
+                    <p>Наша команда всегда готова ответить на вопросы и помочь вам в любой ситуации</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-lock-open"></i> Прозрачные цены</h4>
+                    <p>Нет скрытых комиссий - все расходы описаны заранее и понятны</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-coins"></i> Доступные цены</h4>
+                    <p>Лечение в международных клиниках на 30-50% дешевле, чем в Европе</p>
+                </div>
+
+                <div class="benefit-item">
+                    <h4><i class="fas fa-file-shield"></i> Безопасность данных</h4>
+                    <p>Ваша медицинская информация надежно защищена и хранится в безопасности</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- История -->
+    <section style="background: white; padding: 3rem 0;">
+        <div class="container">
+            <h2>История развития</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024</div>
+                    <div class="timeline-content">
+                        <h4>Основание платформы</h4>
+                        <p>MedBridge была основана группой энтузиастов с целью революционизировать медицинское обслуживание в Кыргызстане</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 (Q3)</div>
+                    <div class="timeline-content">
+                        <h4>Запуск в Бишкеке</h4>
+                        <p>Открыли портал с первыми 50 клиниками и 100 врачами, зарегистрировали первых 1000 пациентов</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 (Q4)</div>
+                    <div class="timeline-content">
+                        <h4>Расширение за границу</h4>
+                        <p>Начали партнерство с ведущими клиниками Турции и Индии, помогли первым 100 пациентам получить лечение за границей</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-content">
+                        <h4>Масштабирование сети</h4>
+                        <p>Увеличили количество партнёров до 250 врачей и 50+ клиник, обработали более 5000 направлений</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-content">
+                        <h4>Актуальный момент</h4>
+                        <p>Продолжаем развиваться, добавляя новые функции и расширяя присутствие на рынке</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Команда -->
+    <section class="about-team">
+        <div class="container">
+            <h2>Наша команда</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Азат Имамов</div>
+                        <div class="member-position">Генеральный директор</div>
+                        <div class="member-bio">Более 15 лет опыта в медицинском бизнесе и предпринимательстве</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Жанарбек Сулейменов</div>
+                        <div class="member-position">Медицинский директор</div>
+                        <div class="member-bio">Кандидат медицинских наук, консультант ведущих клиник Турции</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Айнура Каримова</div>
+                        <div class="member-position">Директор по операциям</div>
+                        <div class="member-bio">Специалист по управлению проектами и организации медицинских услуг</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Данияр Абдулов</div>
+                        <div class="member-position">Технический директор</div>
+                        <div class="member-bio">Опытный разработчик и архитектор IT решений для медицины</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Гюльнара Исаева</div>
+                        <div class="member-position">Менеджер по развитию</div>
+                        <div class="member-bio">Специалист по международным партнерствам и развитию сети клиник</div>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-image">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="member-info">
+                        <div class="member-name">Мирбек Кадыров</div>
+                        <div class="member-position">Координатор пациентов</div>
+                        <div class="member-bio">Координатор поддержки пациентов и их сопровождения в процессе лечения</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Партнеры -->
+    <section style="background: linear-gradient(180deg, var(--light-bg) 0%, white 100%); padding: 3rem 0;">
+        <div class="container">
+            <h2>Наши партнеры</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem; font-size: 1.1rem;">
+                Мы гордимся работать с лучшими партнерами в регионе и за границей
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; text-align: center;">
+                <div style="padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">🏥</div>
+                    <p><strong>American Hospital</strong></p>
+                    <p style="font-size: 0.9rem; color: #999;">Стамбул, Турция</p>
+                </div>
+
+                <div style="padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">🏥</div>
+                    <p><strong>Apollo Hospitals</strong></p>
+                    <p style="font-size: 0.9rem; color: #999;">Дели, Индия</p>
+                </div>
+
+                <div style="padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">🏥</div>
+                    <p><strong>Acibadem Healthcare</strong></p>
+                    <p style="font-size: 0.9rem; color: #999;">Анкара, Турция</p>
+                </div>
+
+                <div style="padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">🏥</div>
+                    <p><strong>Fortis Healthcare</strong></p>
+                    <p style="font-size: 0.9rem; color: #999;">Бангалор, Индия</p>
+                </div>
+
+                <div style="padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">🏥</div>
+                    <p><strong>Hisar Intercontinental</strong></p>
+                    <p style="font-size: 0.9rem; color: #999;">Анкара, Турция</p>
+                </div>
+
+                <div style="padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <div style="font-size: 2rem; color: var(--primary-color); margin-bottom: 1rem;">🏥</div>
+                    <p><strong>Max Healthcare</strong></p>
+                    <p style="font-size: 0.9rem; color: #999;">Дели, Индия</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <h2 style="color: white; margin-bottom: 1rem;">Присоединитесь к MedBridge</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">
+                Откройте для себя новые возможности в получении качественной медицинской помощи
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="location.href='index.html'">
+                    Начать сейчас
+                </button>
+                <button class="btn" style="background: white; color: var(--primary-color);" onclick="location.href='clinics.html'">
+                    Найти клинику
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>О компании</h4>
+                    <p>MedBridge - ведущая медицинская платформа, соединяющая пациентов Кыргызстана с лучшей медициной</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="clinics.html">Клиники</a></li>
+                        <li><a href="doctors.html">Врачи</a></li>
+                        <li><a href="abroad-treatment.html">Лечение за границей</a></li>
+                        <li><a href="about-us.html">О нас</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +996 312 907070</p>
+                    <p><i class="fas fa-envelope"></i> info@medbridge.kg</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Бишкек, Кыргызстан</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Следите за нами</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MedBridge. Все права защищены.</p>
+                <div class="footer-links">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Условия использования</a>
+                    <a href="#">Лицензии</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Для врачей - MedBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .doctor-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .benefit-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 60px rgba(26, 77, 62, 0.25);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .dashboard-panel {
+            background: var(--light-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .referral-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin: 2rem 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--dark-text);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 77, 62, 0.1);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.95rem;
+            opacity: 0.95;
+        }
+
+        .registration-section {
+            background: linear-gradient(135deg, var(--light-bg), white);
+            padding: 3rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .features-list {
+            text-align: left;
+            max-width: 500px;
+            margin: 1rem auto;
+        }
+
+        .features-list li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: bold;
+            min-width: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hospital"></i>
+                    <span>MedBridge</span>
+                </div>
+                
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link" data-i18n="navHome">Главная</a>
+                    <a href="clinics.html" class="nav-link" data-i18n="navClinics">Клиники</a>
+                    <a href="doctors.html" class="nav-link" data-i18n="navDoctors">Врачи</a>
+                    <a href="abroad-treatment.html" class="nav-link" data-i18n="navAbroad">Лечение за границей</a>
+                    <a href="doctors-section.html" class="nav-link active" data-i18n="navDoctorsSection">Врачам</a>
+                    <a href="about-us.html" class="nav-link" data-i18n="navAbout">О нас</a>
+                    <a href="#" class="nav-link" data-i18n="navContacts">Контакты</a>
+                </nav>
+
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLang">РУ</span>
+                        </button>
+                        <div class="lang-menu">
+                            <button class="lang-option" data-lang="ru">Русский</button>
+                            <button class="lang-option" data-lang="ky">Кыргызский</button>
+                            <button class="lang-option" data-lang="en">English</button>
+                        </div>
+                    </div>
+                    <button class="burger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" style="height: 50vh; margin-top: 70px;">
+        <div class="hero-content">
+            <h1>Врачам Кыргызстана</h1>
+            <p class="hero-subtitle">Сотрудничайте с лучшими клиниками за границей</p>
+        </div>
+    </section>
+
+    <!-- Преимущества сотрудничества -->
+    <section style="background: white;">
+        <div class="container">
+            <h2>Почему врачи выбирают MedBridge</h2>
+            <div class="doctor-benefits">
+                <div class="benefit-card">
+                    <i class="fas fa-globe benefit-icon"></i>
+                    <h3>Доступ к международным клиникам</h3>
+                    <p>Сотрудничество с ведущими специалистами Турции и Индии</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-share-alt benefit-icon"></i>
+                    <h3>Отправка пациентов</h3>
+                    <p>Простая система направления пациентов на лечение за границу</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-comments benefit-icon"></i>
+                    <h3>Консультации онлайн</h3>
+                    <p>Получайте международные консультации коллег 24/7</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-certificate benefit-icon"></i>
+                    <h3>Повышение квалификации</h3>
+                    <p>Доступ к вебинарам и обучающим материалам</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-chart-line benefit-icon"></i>
+                    <h3>Увеличение дохода</h3>
+                    <p>Комиссия за каждого направленного пациента</p>
+                </div>
+
+                <div class="benefit-card">
+                    <i class="fas fa-lock benefit-icon"></i>
+                    <h3>Конфиденциальность</h3>
+                    <p>Защита данных пациентов и врачебной тайны</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика -->
+    <section style="background: linear-gradient(180deg, var(--light-bg) 0%, white 100%);">
+        <div class="container">
+            <h2>Наша статистика</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Врачей в сети</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">Успешных направлений</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Успешных операций</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">150M+</div>
+                    <div class="stat-label">Выплачено врачам</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма направления пациента -->
+    <section style="background: white;">
+        <div class="container">
+            <h2>Направить пациента</h2>
+            <div class="referral-form">
+                <form id="referralForm" onsubmit="submitReferral(event)">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label>Ваше имя</label>
+                            <input type="text" placeholder="ФИО врача" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Специальность</label>
+                            <select required>
+                                <option>Выберите специальность</option>
+                                <option>Кардиология</option>
+                                <option>Онкология</option>
+                                <option>Ортопедия</option>
+                                <option>Офтальмология</option>
+                                <option>Другое</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Телефон</label>
+                            <input type="tel" placeholder="+996 ..." required>
+                        </div>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                        <div class="form-group">
+                            <label>Имя пациента</label>
+                            <input type="text" placeholder="ФИО пациента" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Возраст пациента</label>
+                            <input type="number" placeholder="Возраст" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Диагноз / Необходимое лечение</label>
+                        <input type="text" placeholder="Опишите диагноз" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Предпочтительная страна лечения</label>
+                        <select required>
+                            <option>Выберите страну</option>
+                            <option>Турция</option>
+                            <option>Индия</option>
+                            <option>Не важно</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Дополнительная информация</label>
+                        <textarea placeholder="Описание случая, медицинская история и другие важные детали" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" required style="width: auto; margin-right: 0.5rem;">
+                            Я согласен с условиями обработки данных
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        Отправить направление
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Процесс кооперации -->
+    <section style="background: linear-gradient(180deg, var(--light-bg) 0%, white 100%);">
+        <div class="container">
+            <h2>Как это работает</h2>
+            <div class="process-steps" style="margin-top: 2rem;">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Регистрация</h4>
+                    <p>Заполните профиль врача</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Верификация</h4>
+                    <p>Проверим лицензию и документы</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Направление</h4>
+                    <p>Отправляйте пациентов</p>
+                </div>
+                <div class="step-arrow">→</div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Комиссия</h4>
+                    <p>Получайте выплаты</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Регистрация врача -->
+    <section style="background: white;">
+        <div class="container">
+            <div class="registration-section">
+                <h2>Начните сотрудничество с MedBridge</h2>
+                <p style="font-size: 1.1rem; color: #666; margin: 1rem 0;">
+                    Присоединитесь к сети врачей, которые помогают пациентам получить качественное лечение за границей
+                </p>
+                <ul class="features-list">
+                    <li>Простая регистрация за 5 минут</li>
+                    <li>Никаких скрытых комиссий</li>
+                    <li>Быстрые выплаты</li>
+                    <li>Поддержка 24/7</li>
+                    <li>Доступ к обширной сети клиник</li>
+                </ul>
+                <button class="btn btn-primary" style="margin-top: 1.5rem;" onclick="registerDoctor()">
+                    Зарегистрироваться как врач
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>О нас</h4>
+                    <p>MedBridge - ведущая медицинская платформа Кыргызстана</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="clinics.html">Клиники</a></li>
+                        <li><a href="doctors.html">Врачи</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Контакты</h4>
+                    <p><i class="fas fa-phone"></i> +996 312 907070</p>
+                    <p><i class="fas fa-envelope"></i> doctors@medbridge.kg</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Следите за нами</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 MedBridge. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="doctors-section.js"></script>
+</body>
+</html>
