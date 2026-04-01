@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиники Бишкека - MedBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><i class="fas fa-hospital"></i><span>MedBridge</span></div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="clinics.html" class="nav-link active">Клиники</a>
+                    <a href="doctors.html" class="nav-link">Врачи</a>
+                    <a href="abroad-treatment.html" class="nav-link">Лечение за границей</a>
+                    <a href="doctors-section.html" class="nav-link">Врачам</a>
+                    <a href="about-us.html" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn"><i class="fas fa-globe"></i><span id="currentLang">РУ</span></button>
+                        <div class="lang-menu"><button class="lang-option" data-lang="ru">Русский</button><button class="lang-option" data-lang="ky">Кыргызский</button><button class="lang-option" data-lang="en">English</button></div>
+                    </div>
+                    <button class="burger-menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="height: 50vh; margin-top: 70px;">
+        <div class="hero-content">
+            <h1>Клиники Бишкека</h1>
+            <p class="hero-subtitle">Найдите лучшую клинику для вашего здоровья</p>
+        </div>
+    </section>
+
+    <section class="search-clinics">
+        <div class="container">
+            <h2>Расширенный поиск</h2>
+            <div class="search-filters">
+                <div class="filter-group"><input type="text" placeholder="Название клиники" class="filter-input search-name"></div>
+                <div class="filter-group"><select class="filter-select search-specialty"><option value="">Все специализации</option><option value="кардиология">Кардиология</option><option value="онкология">Онкология</option><option value="стоматология">Стоматология</option><option value="офтальмология">Офтальмология</option><option value="ортопедия">Ортопедия</option><option value="педиатрия">Педиатрия</option><option value="неврология">Неврология</option><option value="гастроэнтерология">Гастроэнтерология</option></select></div>
+                <div class="filter-group"><select class="filter-select search-rating"><option value="">Все рейтинги</option><option value="4.9">⭐⭐⭐⭐⭐ 4.9 - 5.0</option><option value="4.5">⭐⭐⭐⭐ 4.5 - 4.8</option><option value="4">⭐⭐⭐ 4.0 - 4.4</option></select></div>
+                <div class="filter-group"><select class="filter-select search-sort"><option value="rating">По рейтингу</option><option value="price">По цене</option><option value="alphabetical">По названию</option><option value="reviews">По числу отзывов</option></select></div>
+                <button class="btn btn-primary" onclick="performSearch()">Поиск</button>
+                <button class="btn btn-secondary" onclick="resetFilters()">Сброс</button>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Все клиники Бишкека</h2>
+            <div id="all-clinics-list" class="clinics-grid"></div>
+        </div>
+    </section>
+
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Запись к врачу</h2>
+            <form class="appointment-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <select required><option>Выберите дату</option><option>2026-03-05</option><option>2026-03-06</option><option>2026-03-07</option></select>
+                <select required><option>Выберите время</option><option>09:00</option><option>10:00</option><option>14:00</option><option>15:30</option></select>
+                <textarea placeholder="Описание вашего состояния" rows="4"></textarea>
+                <button type="submit" class="btn btn-primary">Записаться</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section"><h4>О нас</h4><p>MedBridge - ведущая медицинская платформа Кыргызстана</p></div>
+                <div class="footer-section"><h4>Быстрые ссылки</h4><ul><li><a href="index.html">Главная</a></li><li><a href="doctors.html">Врачи</a></li><li><a href="abroad-treatment.html">Лечение за границей</a></li><li><a href="#">Контакты</a></li></ul></div>
+                <div class="footer-section"><h4>Контакты</h4><p><i class="fas fa-phone"></i> +996 312 907070</p><p><i class="fas fa-envelope"></i> info@medbridge.kg</p></div>
+                <div class="footer-section"><h4>Следите за нами</h4><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 MedBridge. Все права защищены.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="clinics.js"></script>
+</body>
+</html>
