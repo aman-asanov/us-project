@@ -214,6 +214,7 @@ const translationDictionary = {
         'Запись к врачу': 'Doctor Appointment',
         'Уровень медицины': 'Level of medicine',
         'Время в пути': 'Travel time',
+        'клиника': 'clinic',
         'Язык больниц': 'Hospital language',
         'Требуемая виза': 'Required visa',
         'Реабилитация': 'Rehabilitation',
