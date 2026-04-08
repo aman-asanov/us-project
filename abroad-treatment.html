@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лечение за границей - Турция и Индия - MedBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .treatment-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 2rem; margin: 2rem 0; }
+        .treatment-card { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(197, 210, 248, 0.15); border-radius: 16px; overflow: hidden; transition: all 0.3s ease; }
+        .treatment-card:hover { transform: translateY(-15px); box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45); background: rgba(255, 255, 255, 0.12); }
+        .treatment-header { background: linear-gradient(135deg, #8B3A5C, #4F0C28); color: white; padding: 2rem; text-align: center; }
+        .treatment-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .treatment-body { padding: 2rem; }
+        .clinic-list { list-style: none; margin: 1rem 0; }
+        .clinic-list li { padding: 0.8rem 0; border-bottom: 1px solid rgba(197, 210, 248, 0.15); display: flex; align-items: center; gap: 0.8rem; color: #E0D4DA; }
+        .clinic-list li:last-child { border-bottom: none; }
+        .clinic-list li::before { content: '✓'; color: #C5D2F8; font-weight: bold; font-size: 1.2rem; }
+        .plan-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(79, 12, 40, 0.9); backdrop-filter: blur(5px); }
+        .plan-content { background: #4F0C28; margin: 5% auto; padding: 2rem; border-radius: 16px; width: 90%; max-width: 700px; border: 1px solid rgba(197, 210, 248, 0.3); max-height: 80vh; overflow-y: auto; }
+        .plan-close { color: #E0D4DA; float: right; font-size: 2rem; font-weight: bold; cursor: pointer; }
+        .plan-close:hover { color: #C5D2F8; }
+        .visa-section { background: rgba(255, 255, 255, 0.05); padding: 2rem; border-radius: 12px; margin: 2rem 0; }
+        .visa-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; }
+        .visa-step { background: rgba(255, 255, 255, 0.08); padding: 1.5rem; border-radius: 12px; text-align: center; }
+        .visa-step-number { font-size: 2rem; font-weight: 700; color: #C5D2F8; margin-bottom: 0.5rem; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; background: rgba(255, 255, 255, 0.05); border-radius: 12px; overflow: hidden; }
+        .comparison-table th { background: #8B3A5C; color: white; padding: 1rem; text-align: left; }
+        .comparison-table td { padding: 1rem; border-bottom: 1px solid rgba(197, 210, 248, 0.15); color: #E0D4DA; }
+        .comparison-table tr:hover { background: rgba(255, 255, 255, 0.05); }
+        .cost-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .cost-item { background: rgba(255, 255, 255, 0.08); padding: 1.5rem; border-radius: 12px; text-align: center; border: 1px solid rgba(197, 210, 248, 0.15); }
+        .cost-amount { font-size: 2rem; font-weight: 700; color: #C5D2F8; margin: 1rem 0; }
+        .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+        .testimonial { background: rgba(255, 255, 255, 0.08); padding: 1.5rem; border-radius: 12px; font-style: italic; line-height: 1.8; color: #E0D4DA; border: 1px solid rgba(197, 210, 248, 0.15); }
+        .testimonial-author { margin-top: 1rem; font-weight: 600; font-style: normal; color: #C5D2F8; }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><i class="fas fa-hospital"></i><span>MedBridge</span></div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="clinics.html" class="nav-link">Клиники</a>
+                    <a href="doctors.html" class="nav-link">Врачи</a>
+                    <a href="abroad-treatment.html" class="nav-link active">Лечение за границей</a>
+                    <a href="doctors-section.html" class="nav-link">Врачам</a>
+                    <a href="about-us.html" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn"><i class="fas fa-globe"></i><span id="currentLang">РУ</span></button>
+                        <div class="lang-menu"><button class="lang-option" data-lang="ru">Русский</button><button class="lang-option" data-lang="ky">Кыргызский</button><button class="lang-option" data-lang="en">English</button></div>
+                    </div>
+                    <button class="burger-menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="height: 50vh; margin-top: 70px;">
+        <div class="hero-content">
+            <h1>Лечение за границей</h1>
+            <p class="hero-subtitle">Доступ к лучшим клиникам Турции и Индии</p>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Выберите страну для лечения</h2>
+            <div class="treatment-cards">
+                <div class="treatment-card">
+                    <div class="treatment-header"><div class="treatment-icon">🇹🇷</div><h3 style="color: white;">Турция</h3><p>Современные технологии и опыт</p></div>
+                    <div class="treatment-body">
+                        <h4 style="margin-bottom: 1rem; color: #C5D2F8;">Специализации</h4>
+                        <ul class="clinic-list"><li>Кардиология и кардиохирургия</li><li>Онкология</li><li>Трансплантация органов</li><li>Пластическая хирургия</li><li>Офтальмология</li><li>Ортопедия</li></ul>
+                        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #E0D4DA;">Стоимость лечения: 30-50% дешевле, чем в Европе</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="viewTreatmentPlan('turkey')">Получить план</button>
+                    </div>
+                </div>
+                <div class="treatment-card">
+                    <div class="treatment-header"><div class="treatment-icon">🇮🇳</div><h3 style="color: white;">Индия</h3><p>Высокие стандарты и доступные цены</p></div>
+                    <div class="treatment-body">
+                        <h4 style="margin-bottom: 1rem; color: #C5D2F8;">Специализации</h4>
+                        <ul class="clinic-list"><li>Трансплантация печени</li><li>Кардиохирургия</li><li>Онкология</li><li>Ортопедия</li><li>Офтальмология</li><li>Гинекология</li></ul>
+                        <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #E0D4DA;">Стоимость лечения: 50-70% дешевле, чем в Европе</p>
+                        <button class="btn btn-primary" style="width: 100%; margin-top: 1rem;" onclick="viewTreatmentPlan('india')">Получить план</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Сравнение Турции и Индии</h2>
+            <table class="comparison-table">
+                <thead><tr><th>Критерий</th><th>🇹🇷 Турция</th><th>🇮🇳 Индия</th></tr></thead>
+                <tbody>
+                    <tr><td><strong>Стоимость</strong></td><td>Средняя</td><td>Низкая</td></tr>
+                    <tr><td><strong>Уровень медицины</strong></td><td>Европейский стандарт</td><td>Мировой стандарт</td></tr>
+                    <tr><td><strong>Время в пути</strong></td><td>5-6 часов</td><td>7-8 часов</td></tr>
+                    <tr><td><strong>Язык больниц</strong></td><td>Английский, Турецкий</td><td>Английский</td></tr>
+                    <tr><td><strong>Требуемая виза</strong></td><td>E-виза (простая)</td><td>E-виза (простая)</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Помощь с визой и документами</h2>
+            <div class="visa-section">
+                <h3 style="text-align: center; margin-bottom: 2rem; color: #C5D2F8;">7 шагов к лечению за границей</h3>
+                <div class="visa-steps">
+                    <div class="visa-step"><div class="visa-step-number">1</div><h4 style="color: #C5D2F8;">Консультация</h4><p>Обсудим ваш случай с врачами</p></div>
+                    <div class="visa-step"><div class="visa-step-number">2</div><h4 style="color: #C5D2F8;">Подбор клиники</h4><p>Выберем лучший вариант</p></div>
+                    <div class="visa-step"><div class="visa-step-number">3</div><h4 style="color: #C5D2F8;">Оценка стоимости</h4><p>Рассчитаем полную стоимость</p></div>
+                    <div class="visa-step"><div class="visa-step-number">4</div><h4 style="color: #C5D2F8;">Виза и документы</h4><p>Поможем оформить визу</p></div>
+                    <div class="visa-step"><div class="visa-step-number">5</div><h4 style="color: #C5D2F8;">Перелет</h4><p>Забронируем авиабилеты</p></div>
+                    <div class="visa-step"><div class="visa-step-number">6</div><h4 style="color: #C5D2F8;">Лечение</h4><p>Сопровождение на месте</p></div>
+                    <div class="visa-step"><div class="visa-step-number">7</div><h4 style="color: #C5D2F8;">Возвращение</h4><p>Помощь с возвращением домой</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Стоимость услуг</h2>
+            <div class="cost-comparison">
+                <div class="cost-item"><h4 style="color: #C5D2F8;">Консультация врача</h4><div class="cost-amount">Бесплатно</div><p>Онлайн консультация и оценка</p></div>
+                <div class="cost-item"><h4 style="color: #C5D2F8;">Подбор клиники</h4><div class="cost-amount">Бесплатно</div><p>Включено в сервис</p></div>
+                <div class="cost-item"><h4 style="color: #C5D2F8;">Помощь с визой</h4><div class="cost-amount">50$</div><p>Оформление визы</p></div>
+                <div class="cost-item"><h4 style="color: #C5D2F8;">Переводы документов</h4><div class="cost-amount">30-50$</div><p>Нотариальные переводы</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Отзывы пациентов о лечении за границей</h2>
+            <div class="testimonials">
+                <div class="testimonial">"Спасибо MedBridge за организацию моего лечения в Турции. Все прошло идеально. Врачи высочайшего уровня, сервис отличный, и цены на 40% ниже, чем я рассчитывал."<div class="testimonial-author">— Рахим А., 52 года</div></div>
+                <div class="testimonial">"Операция в Индии прошла успешно. Клиника оборудована по последнему слову техники. Весь процесс был организован идеально. Рекомендую!"<div class="testimonial-author">— Жанна К., 45 лет</div></div>
+                <div class="testimonial">"Получила первоклассное медицинское обслуживание в Турции. MedBridge помог со всеми документами, визой и трансфером. Огромное спасибо!"<div class="testimonial-author">— Ольга С., 38 лет</div></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="planModal" class="plan-modal"><div class="plan-content"><span class="plan-close" onclick="closePlanModal()">&times;</span><div id="planContent"></div></div></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section"><h4>О нас</h4><p>MedBridge - ведущая медицинская платформа Кыргызстана</p></div>
+                <div class="footer-section"><h4>Быстрые ссылки</h4><ul><li><a href="index.html">Главная</a></li><li><a href="clinics.html">Клиники</a></li><li><a href="doctors.html">Врачи</a></li><li><a href="#">Контакты</a></li></ul></div>
+                <div class="footer-section"><h4>Контакты</h4><p><i class="fas fa-phone"></i> +996 312 907070</p><p><i class="fas fa-envelope"></i> info@medbridge.kg</p></div>
+                <div class="footer-section"><h4>Следите за нами</h4><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 MedBridge. Все права защищены.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="abroad-treatment.js"></script>
+</body>
+</html>
