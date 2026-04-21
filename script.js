@@ -196,7 +196,7 @@ function showNotification(message, type = 'info') {
         position: fixed;
         top: 80px;
         right: 20px;
-        background: ${type === 'success' ? '#4CAF50' : type === 'error' ? '#f44336' : '#2196F3'};
+        background: ${type === 'success' ? '#4F0C28' : type === 'error' ? '#8B0000' : '#8B3A5C' };
         color: white;
         padding: 15px 20px;
         border-radius: 8px;
@@ -430,8 +430,8 @@ function initializeScrollToTop() {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background: linear-gradient(135deg, #1a4d3e, #2d7560);
-            color: white;
+            background: 
+            color: white; linear-gradient(135deg, #4F0C28, #8B3A5C);
             border: none;
             width: 50px;
             height: 50px;
