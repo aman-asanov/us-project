@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedBridge Bishkek - Медицинская платформа</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-hospital"></i>
+                    <span>MedBridge</span>
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link active">Главная</a>
+                    <a href="clinics.html" class="nav-link">Клиники</a>
+                    <a href="doctors.html" class="nav-link">Врачи</a>
+                    <a href="abroad-treatment.html" class="nav-link">Лечение за границей</a>
+                    <a href="doctors-section.html" class="nav-link">Врачам</a>
+                    <a href="about-us.html" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLang">РУ</span>
+                        </button>
+                        <div class="lang-menu">
+                            <button class="lang-option" data-lang="ru">Русский</button>
+                            <button class="lang-option" data-lang="ky">Кыргызский</button>
+                            <button class="lang-option" data-lang="en">English</button>
+                        </div>
+                    </div>
+                    <button class="burger-menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Ваш надежный мост к качественной медицине</h1>
+            <p class="hero-subtitle">Лучшие клиники Бишкека, Турции и Индии в одном месте</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" onclick="document.getElementById('clinics-search').scrollIntoView({behavior: 'smooth'})">Найти клинику</button>
+                <button class="btn btn-primary">Получить консультацию</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-clinics" id="clinics-search">
+        <div class="container">
+            <h2>Найти клинику</h2>
+            <div class="search-filters">
+                <div class="filter-group">
+                    <input type="text" placeholder="Название клиники" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option>Все специализации</option>
+                        <option>Кардиология</option>
+                        <option>Онкология</option>
+                        <option>Стоматология</option>
+                        <option>Офтальмология</option>
+                        <option>Ортопедия</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option>Все города</option>
+                        <option>Бишкек</option>
+                        <option>Ош</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select class="filter-select">
+                        <option>Сортировка</option>
+                        <option>По рейтингу</option>
+                        <option>По цене</option>
+                        <option>Новые</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary">Поиск</button>
+            </div>
+            <div class="clinics-grid">
+                <div class="clinic-card">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200?text=Clinic+1" alt="Clinic">
+                        <span class="rating-badge">4.8 ⭐</span>
+                    </div>
+                    <div class="clinic-info">
+                        <h3>Клиника "Альфастом"</h3>
+                        <p class="specialty">Кардиология, Терапия</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> ул. Чуй, 123, Бишкек</p>
+                        <p class="rating-text">45 отзывов</p>
+                        <button class="btn btn-small">Записаться</button>
+                    </div>
+                </div>
+                <div class="clinic-card">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200?text=Clinic+2" alt="Clinic">
+                        <span class="rating-badge">4.9 ⭐</span>
+                    </div>
+                    <div class="clinic-info">
+                        <h3>ООО "МедЦентр"</h3>
+                        <p class="specialty">Онкология, Хирургия</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> пр. Манаса, 456, Бишкек</p>
+                        <p class="rating-text">67 отзывов</p>
+                        <button class="btn btn-small">Записаться</button>
+                    </div>
+                </div>
+                <div class="clinic-card">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200?text=Clinic+3" alt="Clinic">
+                        <span class="rating-badge">4.7 ⭐</span>
+                    </div>
+                    <div class="clinic-info">
+                        <h3>Клиника "Окулюс"</h3>
+                        <p class="specialty">Офтальмология</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> ул. Боконбаева, 789, Бишкек</p>
+                        <p class="rating-text">32 отзыва</p>
+                        <button class="btn btn-small">Записаться</button>
+                    </div>
+                </div>
+                <div class="clinic-card">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200?text=Clinic+4" alt="Clinic">
+                        <span class="rating-badge">4.6 ⭐</span>
+                    </div>
+                    <div class="clinic-info">
+                        <h3>Дентальный центр "Улыбка"</h3>
+                        <p class="specialty">Стоматология, Имплантология</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> ул. Логинова, 321, Бишкек</p>
+                        <p class="rating-text">89 отзывов</p>
+                        <button class="btn btn-small">Записаться</button>
+                    </div>
+                </div>
+                <div class="clinic-card">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200?text=Clinic+5" alt="Clinic">
+                        <span class="rating-badge">4.9 ⭐</span>
+                    </div>
+                    <div class="clinic-info">
+                        <h3>Ортопедический центр</h3>
+                        <p class="specialty">Ортопедия, Травматология</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> ул. Ленина, 654, Бишкек</p>
+                        <p class="rating-text">56 отзывов</p>
+                        <button class="btn btn-small">Записаться</button>
+                    </div>
+                </div>
+                <div class="clinic-card">
+                    <div class="clinic-image">
+                        <img src="https://via.placeholder.com/300x200?text=Clinic+6" alt="Clinic">
+                        <span class="rating-badge">4.8 ⭐</span>
+                    </div>
+                    <div class="clinic-info">
+                        <h3>Детская клиника "Радуга"</h3>
+                        <p class="specialty">Педиатрия, Неврология</p>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> ул. Чокона, 999, Бишкек</p>
+                        <p class="rating-text">23 отзыва</p>
+                        <button class="btn btn-small">Записаться</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="container">
+            <h2>Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-search"></i>
+                    <h3>Поиск клиник</h3>
+                    <p>Найдите лучшие клиники Бишкека с фильтрацией по специализации, цене и отзывам</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Онлайн запись</h3>
+                    <p>Запишитесь к врачу за несколько кликов, выберите удобное время</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Лечение за границей</h3>
+                    <p>Направление на лечение в Турцию и Индию к лучшим специалистам</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Помощь с визой</h3>
+                    <p>Полное сопровождение: виза, перелет, жилье, транспорт</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-doctor"></i>
+                    <h3>Консультации врачей</h3>
+                    <p>Онлайн консультации с врачами и медицинское сопровождение</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Защита данных</h3>
+                    <p>Надежное хранилище ваших медицинских документов и рецептов</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="abroad-section">
+        <div class="container">
+            <h2>Лечение в зарубежных клиниках</h2>
+            <div class="countries-grid">
+                <div class="country-card">
+                    <div class="country-flag">🇹🇷</div>
+                    <h3>Турция</h3>
+                    <p class="country-desc">Современные клиники Стамбула, Анкары и Измира</p>
+                    <div class="specialties">
+                        <span class="specialty-tag">Кардиология</span>
+                        <span class="specialty-tag">Онкология</span>
+                        <span class="specialty-tag">Пластическая хирургия</span>
+                        <span class="specialty-tag">Трансплантация</span>
+                    </div>
+                    <button class="btn btn-small">Получить план</button>
+                </div>
+                <div class="country-card">
+                    <div class="country-flag">🇮🇳</div>
+                    <h3>Индия</h3>
+                    <p class="country-desc">Лучшие больницы Дели, Бангалора и Мумбаи</p>
+                    <div class="specialties">
+                        <span class="specialty-tag">Трансплантация печени</span>
+                        <span class="specialty-tag">Кардиохирургия</span>
+                        <span class="specialty-tag">Ортопедия</span>
+                        <span class="specialty-tag">Онкология</span>
+                    </div>
+                    <button class="btn btn-small">Получить план</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="treatment-process">
+        <div class="container">
+            <h2>Процесс лечения за границей</h2>
+            <div class="process-steps">
+                <div class="step"><div class="step-number">1</div><h4>Заявка</h4><p>Оставьте первичную информацию</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-number">2</div><h4>Консультация</h4><p>Обсудим ваш случай</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-number">3</div><h4>Подбор клиники</h4><p>Найдем лучший вариант</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-number">4</div><h4>Виза</h4><p>Поможем с оформлением</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-number">5</div><h4>Перелет</h4><p>Забронируем билеты</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-number">6</div><h4>Лечение</h4><p>Полное сопровождение</p></div>
+                <div class="step-arrow">→</div>
+                <div class="step"><div class="step-number">7</div><h4>Возвращение</h4><p>Помощь с возвращением</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <div class="container">
+            <h2>Отзывы пациентов</h2>
+            <div class="reviews-grid">
+                <div class="review-card"><div class="review-rating">⭐⭐⭐⭐⭐</div><p class="review-text">"Спасибо MedBridge! Благодаря вам я получил качественное лечение в Турции. Весь процесс был гладким и профессиональным."</p><p class="review-author">— Алексей М., Бишкек</p></div>
+                <div class="review-card"><div class="review-rating">⭐⭐⭐⭐⭐</div><p class="review-text">"Отличная платформа! Легко найти специалиста, записаться и получить консультацию. Рекомендую всем!"</p><p class="review-author">— Мария К., Бишкек</p></div>
+                <div class="review-card"><div class="review-rating">⭐⭐⭐⭐⭐</div><p class="review-text">"Быстрая запись, вежливый персонал, современные кабинеты. Спасибо за помощь с визой и перелетом в Индию!"</p><p class="review-author">— Дмитрий Н., Ош</p></div>
+            </div>
+        </div>
+    </section>
+
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Запись к врачу</h2>
+            <form class="appointment-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <select required><option>Выберите дату</option><option>2026-03-05</option><option>2026-03-06</option><option>2026-03-07</option></select>
+                <select required><option>Выберите время</option><option>09:00</option><option>10:00</option><option>14:00</option><option>15:30</option></select>
+                <textarea placeholder="Описание вашего состояния" rows="4"></textarea>
+                <button type="submit" class="btn btn-primary">Записаться</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section"><h4>О компании</h4><p>MedBridge - ведущая медицинская платформа, соединяющая пациентов с лучшими клиниками Кыргызстана и зарубежья.</p></div>
+                <div class="footer-section"><h4>Быстрые ссылки</h4><ul><li><a href="#">Клиники</a></li><li><a href="#">Врачи</a></li><li><a href="#">О нас</a></li><li><a href="#">Контакты</a></li></ul></div>
+                <div class="footer-section"><h4>Связь</h4><p><i class="fas fa-phone"></i> +996 312 907070</p><p><i class="fas fa-envelope"></i> info@medbridge.kg</p><p><i class="fas fa-map-marker-alt"></i> Бишкек, Кыргызстан</p></div>
+                <div class="footer-section"><h4>Следите за нами</h4><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 MedBridge Bishkek. Все права защищены.</p><div class="footer-links"><a href="#">Политика конфиденциальности</a><a href="#">Условия использования</a><a href="#">Лицензии</a></div></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

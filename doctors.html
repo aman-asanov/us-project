@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Врачи - MedBridge</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .doctor-card {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(197, 210, 248, 0.15);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .doctor-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.45);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        .doctor-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, #8B3A5C, #4F0C28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+        }
+        .doctor-spec-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #C5D2F8;
+            color: #4F0C28;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .doctor-info { padding: 1.5rem; }
+        .doctor-name { font-size: 1.3rem; font-weight: 700; color: #C5D2F8; margin-bottom: 0.3rem; }
+        .doctor-specialty { color: #C5D2F8; font-weight: 500; margin-bottom: 0.5rem; }
+        .doctor-experience { color: #E0D4DA; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .doctor-rating { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; color: #C5D2F8; }
+        .doctor-languages { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+        .language-tag { background: rgba(197, 210, 248, 0.15); color: #C5D2F8; padding: 4px 10px; border-radius: 12px; font-size: 0.85rem; }
+        .doctor-actions { display: flex; gap: 0.5rem; }
+        .doctor-actions .btn { flex: 1; }
+        .doctor-details-modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(79, 12, 40, 0.9); backdrop-filter: blur(5px); }
+        .doctor-details-content { background: #4F0C28; margin: 5% auto; padding: 2rem; border-radius: 16px; width: 90%; max-width: 600px; border: 1px solid rgba(197, 210, 248, 0.3); max-height: 80vh; overflow-y: auto; }
+        .doctor-details-close { color: #E0D4DA; float: right; font-size: 2rem; font-weight: bold; cursor: pointer; }
+        .doctor-details-close:hover { color: #C5D2F8; }
+        .doctor-details-content h2, .doctor-details-content h4 { color: #C5D2F8; }
+        .doctor-details-content p { color: #E0D4DA; }
+    </style>
+</head>
+<body>
+
+    <select class="filter-select search-specialty">
+    <option value="">Все специализации</option>
+    <option value="кардиология">Кардиология / Кардиохирургия</option>
+    <option value="терапия">Терапия</option>
+    <option value="хирургия">Хирургия</option>
+    <option value="офтальмология">Офтальмология</option>
+    <option value="стоматология">Стоматология</option>
+    <option value="ортопедия">Ортопедия / Травматология</option>
+    <option value="педиатрия">Педиатрия</option>
+    <option value="гастроэнтерология">Гастроэнтерология</option>
+    <option value="гинекология">Гинекология</option>
+    <option value="неврология">Неврология</option>
+    <option value="лор">Отоларингология (ЛОР)</option>
+    
+</select>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo"><i class="fas fa-hospital"></i><span>MedBridge</span></div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Главная</a>
+                    <a href="clinics.html" class="nav-link">Клиники</a>
+                    <a href="doctors.html" class="nav-link active">Врачи</a>
+                    <a href="abroad-treatment.html" class="nav-link">Лечение за границей</a>
+                    <a href="doctors-section.html" class="nav-link">Врачам</a>
+                    <a href="about-us.html" class="nav-link">О нас</a>
+                    <a href="#" class="nav-link">Контакты</a>
+                </nav>
+                <div class="header-right">
+                    <div class="language-selector">
+                        <button class="lang-btn"><i class="fas fa-globe"></i><span id="currentLang">РУ</span></button>
+                        <div class="lang-menu"><button class="lang-option" data-lang="ru">Русский</button><button class="lang-option" data-lang="ky">Кыргызский</button><button class="lang-option" data-lang="en">English</button></div>
+                    </div>
+                    <button class="burger-menu"><span></span><span></span><span></span></button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero" style="height: 50vh; margin-top: 70px;">
+        <div class="hero-content">
+            <h1>Наши врачи</h1>
+            <p class="hero-subtitle">Высокопрофессиональные специалисты с многолетним опытом</p>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <div class="search-filters">
+                <div class="filter-group"><input type="text" placeholder="Фамилия врача" class="filter-input search-name"></div>
+                <div class="filter-group"><select class="filter-select search-specialty"><option value="">Все специализации</option><option value="кардиология">Кардиология</option><option value="онкология">Онкология</option><option value="стоматология">Стоматология</option><option value="офтальмология">Офтальмология</option><option value="ортопедия">Ортопедия</option><option value="педиатрия">Педиатрия</option></select></div>
+                <div class="filter-group"><select class="filter-select search-rating"><option value="">Все рейтинги</option><option value="4.8">⭐⭐⭐⭐⭐ 4.8+</option><option value="4.5">⭐⭐⭐⭐ 4.5+</option><option value="4">⭐⭐⭐ 4.0+</option></select></div>
+                <button class="btn btn-primary" onclick="performDoctorSearch()">Поиск</button>
+                <button class="btn btn-primary" onclick="resetDoctorFilters()">Сброс</button>
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 2rem 0;">
+        <div class="container">
+            <h2>Врачи Бишкека</h2>
+            <div id="doctors-list" class="doctors-grid"></div>
+        </div>
+    </section>
+
+    <div id="doctorDetailsModal" class="doctor-details-modal">
+        <div class="doctor-details-content">
+            <span class="doctor-details-close">&times;</span>
+            <div id="doctorDetailsContent"></div>
+            <button class="btn btn-primary" style="width: 100%; margin-top: 1.5rem;" onclick="bookDoctor()">Записаться</button>
+        </div>
+    </div>
+
+    <div id="appointmentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Запись к врачу</h2>
+            <form class="appointment-form">
+                <input type="text" placeholder="Ваше имя" required>
+                <input type="email" placeholder="Ваш email" required>
+                <input type="tel" placeholder="Номер телефона" required>
+                <select required><option>Выберите дату</option><option>2026-03-05</option><option>2026-03-06</option><option>2026-03-07</option></select>
+                <select required><option>Выберите время</option><option>09:00</option><option>10:00</option><option>14:00</option><option>15:30</option></select>
+                <textarea placeholder="Описание вашего состояния" rows="4"></textarea>
+                <button type="submit" class="btn btn-primary">Записаться</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section"><h4>О нас</h4><p>MedBridge - ведущая медицинская платформа Кыргызстана</p></div>
+                <div class="footer-section"><h4>Быстрые ссылки</h4><ul><li><a href="index.html">Главная</a></li><li><a href="clinics.html">Клиники</a></li><li><a href="abroad-treatment.html">Лечение за границей</a></li><li><a href="#">Контакты</a></li></ul></div>
+                <div class="footer-section"><h4>Контакты</h4><p><i class="fas fa-phone"></i> +996 312 907070</p><p><i class="fas fa-envelope"></i> info@medbridge.kg</p></div>
+                <div class="footer-section"><h4>Следите за нами</h4><div class="social-links"><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div>
+            </div>
+            <div class="footer-bottom"><p>&copy; 2026 MedBridge. Все права защищены.</p></div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="doctors.js"></script>
+</body>
+</html>
